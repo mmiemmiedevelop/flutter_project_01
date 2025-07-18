@@ -15,4 +15,7 @@ class AppColors {
 
   // 연한 회색
   static const Color lightGray = Color(0xFFCED4DA);
+
+  // 흰색
+  static const Color white = Colors.white;
 }

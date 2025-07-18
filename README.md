@@ -1,16 +1,4 @@
-# flutter_project_01
+앱바 -액션즈
+뒤로가기 아이콘
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 타이틀 -로고 및 텍스트 -액션즈 -제스쳐디렉터 -컨테이너 -아이콘
