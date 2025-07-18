@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_01/screens/item_add/item_add_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: ItemAdd(),
+      home: const MyHomePage(),
     );
   }
 }
