@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_01/common/models/model_cart_item.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_mock_data.dart';
+import 'package:flutter_project_01/screens/cart/cart_utils/cart_helper.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
