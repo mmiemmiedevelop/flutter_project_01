@@ -15,7 +15,21 @@ class _CartPageState extends State<CartPage> {
   //List<CartItem> cartItems = CartMockData.getEmptyCart();
 
   // ----------------------------------------------------메소드-------------------------------------------------------------
- 
+ // 총 가격 계산
+  int get totalPrice {
+    return CartHelper.calculateTotalPrice(cartItems);
+  }
+
+  // 수량 업데이트
+  void updateQuantity(int index, int newQty) {
+    setState(() {
+      cartItems = CartHelper.updateItemQuantity(
+        cartItems,
+        cartItems[index].item.id,
+        newQty,
+      );
+    });
+  }
   // ----------------------------------------------------메소드 종료-------------------------------------------------------------
 
   // ----------------------------------------------------빌드 시작-------------------------------------------------------------
