@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_01/common/widgets/text_styles.dart';
 import 'package:flutter_project_01/screens/item_add/widgets/add_button.dart';
 import 'package:flutter_project_01/screens/item_add/widgets/image_upload.dart';
 import 'package:flutter_project_01/screens/item_add/widgets/user_input.dart';
@@ -7,8 +8,16 @@ class ItemAdd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("상품 등록"),
+        backgroundColor: Colors.white,
+        title: Text(
+          "상품 등록",
+          style: AppTextStyles.pretendard(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         // 뒤로 가기 버튼
         leading: IconButton(
           onPressed: () => Navigator.pop(context),

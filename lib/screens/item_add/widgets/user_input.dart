@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_01/common/widgets/text_styles.dart';
 
 // 인풋 제목
 class SectionTitle extends StatelessWidget {
@@ -10,7 +11,10 @@ class SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+      style: AppTextStyles.pretendard(
+        fontSize: 14,
+        fontWeight: FontWeight.w700,
+      ),
     );
   }
 }
