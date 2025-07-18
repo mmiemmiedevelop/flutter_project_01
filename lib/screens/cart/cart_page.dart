@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project_01/common/models/model_cart_item.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_mock_data.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_helper.dart';
+import 'package:flutter_project_01/screens/cart/cart_widgets/cart_empty_widget.dart';
+import 'package:flutter_project_01/screens/cart/cart_widgets/cart_item_list.dart';
+import 'package:flutter_project_01/screens/cart/cart_widgets/cart_bottom_widget.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -16,7 +19,7 @@ class _CartPageState extends State<CartPage> {
   //List<CartItem> cartItems = CartMockData.getEmptyCart();
 
   // ----------------------------------------------------메소드-------------------------------------------------------------
- // 총 가격 계산
+  // 총 가격 계산
   int get totalPrice {
     return CartHelper.calculateTotalPrice(cartItems);
   }
@@ -28,6 +31,16 @@ class _CartPageState extends State<CartPage> {
         cartItems,
         cartItems[index].item.id,
         newQty,
+      );
+    });
+  }
+
+  // 아이템 삭제
+  void removeItem(int index) {
+    setState(() {
+      cartItems = CartHelper.removeItemFromCart(
+        cartItems,
+        cartItems[index].item.id,
       );
     });
   }
@@ -55,7 +68,18 @@ class _CartPageState extends State<CartPage> {
       body: Column(
         children: [
           // 장바구니 아이템 목록
+          Expanded(
+            child: cartItems.isEmpty
+                ? const CartEmptyWidget()
+                : CartItemList(
+                    cartItems: cartItems,
+                    onQuantityChanged: (index) =>
+                        updateQuantity(index, cartItems[index].qty),
+                    onRemove: (index) => removeItem(index),
+                  ),
+          ),
           // 하단 결제 영역
+          if (cartItems.isNotEmpty) CartBottomWidget(totalPrice: totalPrice),
         ],
       ),
     );
