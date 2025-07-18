@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_01/screens/item_list/item_list_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,17 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(),
-    );
-  }
-}
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home Page')),
-      body: const Center(child: Text('Hello, Flutter!')),
+      home: const ItemListPage(),//⭐️커밋시 커밋안돼게 주의!!!!!!!⭐️
     );
   }
 }

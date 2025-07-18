@@ -9,7 +9,7 @@ class ItemListEmptyPage extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           mainAxisSize: MainAxisSize.min,
-          children: [Image.asset('assets/logo.png', height: 80)],
+          children: [Image.asset('assets/images/logo.png', height: 80)],
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -21,7 +21,7 @@ class ItemListEmptyPage extends StatelessWidget {
             child: GestureDetector(
               onTap: () {},
               child: Image.asset(
-                'assets/Vector.png',
+                'assets/images/Vector.png',
                 height: 32,
                 width: 32,
                 color: Colors.black,
@@ -35,7 +35,7 @@ class ItemListEmptyPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/Vector2.png', width: 96, height: 96),
+            Image.asset('assets/images/Vector2.png', width: 96, height: 96),
             SizedBox(height: 20),
             Text(
               '상품이 아직 없어요!',
