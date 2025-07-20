@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_project_01/screens/item_detail/item_detail_page.dart';
-import 'package:flutter_project_01/screens/item_add/item_add_page.dart';
+import 'package:flutter_project_01/screens/cart/cart_page.dart';
 
 class ItemListPage extends StatelessWidget {
   const ItemListPage({super.key});
@@ -69,7 +69,7 @@ class ItemListPage extends StatelessWidget {
                       const SizedBox(width: 24),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text(
                             '오징어 게임 초대장',
                             style: TextStyle(
@@ -323,13 +323,12 @@ class ItemListPage extends StatelessWidget {
           ),
           Positioned(
             left: 300,
-            top: 640,
-
+            top: 650,
             child: IconButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ItemAdd()),
+                  MaterialPageRoute(builder: (context) => CartPage()),
                 );
               },
               icon: Image.asset('assets/images/pluse.png'),
