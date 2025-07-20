@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_01/screens/cart/cart_page.dart';
 
 class Item_Detil extends StatefulWidget {
   const Item_Detil({super.key});
@@ -39,13 +40,12 @@ class _Item_DetilState extends State<Item_Detil> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pop(context); //뒤로가기)
           },
           icon: Icon(Icons.arrow_back),
         ),
         centerTitle: true,
         toolbarHeight: 56,
-        backgroundColor: Colors.white,
         title: const Text('상품 상세', style: TextStyle(color: Colors.black)),
       ),
       backgroundColor: Colors.white, //배경색
@@ -89,7 +89,7 @@ class _Item_DetilState extends State<Item_Detil> {
           ),
           Container(
             width: 411.4,
-            height: 190,
+            height: 120,
             child: ListView(
               scrollDirection: Axis.vertical,
               physics: AlwaysScrollableScrollPhysics(),
@@ -120,10 +120,9 @@ class _Item_DetilState extends State<Item_Detil> {
                   textAlign: TextAlign.start,
                   style: TextStyle(fontSize: 14, color: Colors.black),
                 ),
-                SizedBox(width: 210),
+                SizedBox(width: 190),
                 IconButton(
-                  onPressed: qty <= 0 ? null : _subtractCounter,
-
+                  onPressed: qty > 0 ? _subtractCounter : null,
                   icon: Icon(Icons.remove),
                 ),
                 Text(
@@ -155,7 +154,7 @@ class _Item_DetilState extends State<Item_Detil> {
                     color: Colors.black,
                   ), //나중에 총금액을 적을 자리
                 ),
-                SizedBox(width: 225),
+                SizedBox(width: 205),
                 Text(
                   '${totarprice}원',
                   textAlign: TextAlign.end,
@@ -195,7 +194,10 @@ class _Item_DetilState extends State<Item_Detil> {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.pop(context,);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CartPage()),
+                    );
                   },
                 ),
               ],
