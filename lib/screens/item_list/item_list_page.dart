@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_project_01/screens/item_add/item_add_page.dart';
 import 'package:flutter_project_01/screens/item_detail/item_detail_page.dart';
 import 'package:flutter_project_01/screens/cart/cart_page.dart';
 
@@ -46,7 +47,9 @@ class ItemListPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Item_Detil()),
+                      MaterialPageRoute(
+                        builder: (context) => ItemAdd(),
+                      ), //Item_Detil()),//임시주석
                     );
                   },
                   child: Row(
@@ -99,7 +102,9 @@ class ItemListPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Item_Detil()),
+                      MaterialPageRoute(
+                        builder: (context) => ItemAdd(),
+                      ), //Item_Detil()),//임시주석
                     );
                   },
                   child: Row(
@@ -166,7 +171,9 @@ class ItemListPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Item_Detil()),
+                      MaterialPageRoute(
+                        builder: (context) => ItemAdd(),
+                      ), //Item_Detil()),//임시주석
                     );
                   },
                   child: Row(
@@ -219,7 +226,9 @@ class ItemListPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Item_Detil()),
+                      MaterialPageRoute(
+                        builder: (context) => ItemAdd(),
+                      ), //Item_Detil()),//임시주석
                     );
                   },
                   child: Row(
@@ -272,7 +281,9 @@ class ItemListPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Item_Detil()),
+                      MaterialPageRoute(
+                        builder: (context) => ItemAdd(),
+                      ), //Item_Detil()),//임시주석
                     );
                   },
                   child: Row(
