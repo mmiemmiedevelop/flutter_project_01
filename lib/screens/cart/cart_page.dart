@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_project_01/common/models/model_cart_item.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_mock_data.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_helper.dart';
@@ -15,7 +16,7 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   // 장바구니 아이템 목록
-  List<CartItem> cartItems = CartMockData.getCartItems();
+List<CartItem> cartItems = CartMockData.getCartItems();
   //List<CartItem> cartItems = CartMockData.getEmptyCart();
 
   // ----------------------------------------------------메소드-------------------------------------------------------------
@@ -43,6 +44,34 @@ class _CartPageState extends State<CartPage> {
         cartItems[index].item.id,
       );
     });
+  }
+
+  // 구매 기능
+  void onPurchasePressed() {
+    showCupertinoDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: const Text('구매 확인'),
+          content: Text(
+            '총 ${totalPrice.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}원의 상품을 구매하시겠습니까?',
+          ),
+          actions: [
+            CupertinoDialogAction(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('취소'),
+            ),
+            CupertinoDialogAction(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              },
+              child: const Text('구매'),
+            ),
+          ],
+        );
+      },
+    );
   }
   // ----------------------------------------------------메소드 종료-------------------------------------------------------------
 
@@ -78,7 +107,11 @@ class _CartPageState extends State<CartPage> {
                   ),
           ),
           // 하단 결제 영역
-          if (cartItems.isNotEmpty) CartBottomWidget(totalPrice: totalPrice),
+          if (cartItems.isNotEmpty)
+            CartBottomWidget(
+              totalPrice: totalPrice,
+              onPurchasePressed: onPurchasePressed,
+            ),
         ],
       ),
     );

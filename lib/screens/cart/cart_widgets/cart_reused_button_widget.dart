@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CartButtonReusedWidget extends StatelessWidget {
+class CartReusedButtonWidget extends StatelessWidget {
   final VoidCallback? onPressed;
   final String buttonText;
   final Color? backgroundColor;
@@ -12,7 +12,7 @@ class CartButtonReusedWidget extends StatelessWidget {
   final bool isFullWidth;
   final String? defaultMessage; // 스낵바 메세지
 
-  const CartButtonReusedWidget({
+  const CartReusedButtonWidget({
     super.key,
     this.onPressed,
     this.buttonText = '구매하기',
@@ -34,12 +34,7 @@ class CartButtonReusedWidget extends StatelessWidget {
         onPressed:
             onPressed ??
             () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(defaultMessage ?? '구매가 완료되었습니다!'),
-                  duration: const Duration(seconds: 2),
-                ),
-              );
+              Navigator.of(context).pop();
             },
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor ?? const Color(0xFFD6336C),
