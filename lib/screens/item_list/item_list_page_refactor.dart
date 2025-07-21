@@ -3,11 +3,16 @@ import 'package:flutter_project_01/common/widgets/app_bar.dart';
 import 'package:flutter_project_01/screens/item_list/item_list_mock_data.dart';
 import 'package:flutter_project_01/screens/item_add/item_add_page.dart';
 import 'item_list_tile.dart';
-import 'package:flutter_project_01/screens/item_detail/item_detail_page.dart'; // Added import for ItemDetailPage
+import 'package:flutter_project_01/screens/item_detail/item_detail_page.dart';
 
-class ItemListPageRefactor extends StatelessWidget {
+class ItemListPageRefactor extends StatefulWidget {
   const ItemListPageRefactor({super.key});
 
+  @override
+  State<ItemListPageRefactor> createState() => _ItemListPageRefactorState();
+}
+
+class _ItemListPageRefactorState extends State<ItemListPageRefactor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +27,6 @@ class ItemListPageRefactor extends StatelessWidget {
         itemBuilder: (context, index) {
           Widget tile = GestureDetector(
             onTap: () {
-              //print(ItemListMockData.getCartItems()[index].item.name);//필요하면 주석해제후 사용하면됌
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -106,11 +110,19 @@ class ItemListPageRefactor extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          final result = await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => ItemAdd()),
           );
+          if (result != null && result is Map<String, dynamic>) {
+            ItemListMockData.addNewItem(result);
+            setState(() {
+              // 화면 새로고침
+            });
+          } else {
+            print('result: $result');
+          }
         },
         child: Image.asset('assets/images/pluse.png', width: 64, height: 64),
       ),

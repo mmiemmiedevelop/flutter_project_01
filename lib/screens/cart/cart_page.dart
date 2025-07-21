@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_project_01/common/models/model_cart_item.dart';
 import 'package:flutter_project_01/common/widgets/app_bar.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_mock_data.dart';
@@ -45,6 +46,34 @@ class _CartPageState extends State<CartPage> {
       );
     });
   }
+
+  // 구매 기능
+  void onPurchasePressed() {
+    showCupertinoDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: const Text('구매 확인'),
+          content: Text(
+            '총 ${totalPrice.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}원의 상품을 구매하시겠습니까?',
+          ),
+          actions: [
+            CupertinoDialogAction(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('취소'),
+            ),
+            CupertinoDialogAction(
+              onPressed: () {
+                Cart().clear(); //[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
+                Navigator.of(context).popUntil((route) => route.isFirst);
+              },
+              child: const Text('구매'),
+            ),
+          ],
+        );
+      },
+    );
+  }
   // ----------------------------------------------------메소드 종료-------------------------------------------------------------
 
   // ----------------------------------------------------빌드 시작-------------------------------------------------------------
@@ -56,6 +85,7 @@ class _CartPageState extends State<CartPage> {
         showBackButton: true,
         showLogo: false,
         showCart: false,
+        titleString: '장바구니',
       ),
       // AppBar(
       //   leading: IconButton(
