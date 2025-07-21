@@ -6,6 +6,7 @@ import 'package:flutter_project_01/screens/cart/cart_utils/cart_helper.dart';
 import 'package:flutter_project_01/screens/cart/cart_widgets/cart_empty_widget.dart';
 import 'package:flutter_project_01/screens/cart/cart_widgets/cart_item_list.dart';
 import 'package:flutter_project_01/screens/cart/cart_widgets/cart_bottom_widget.dart';
+import 'package:flutter_project_01/screens/cart/cart_utils/cart_singleton.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -16,7 +17,7 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   // 장바구니 아이템 목록
-List<CartItem> cartItems = CartMockData.getCartItems();
+  List<CartItem> cartItems = CartMockData.getCartItems();
   //List<CartItem> cartItems = CartMockData.getEmptyCart();
 
   // ----------------------------------------------------메소드-------------------------------------------------------------
@@ -39,6 +40,7 @@ List<CartItem> cartItems = CartMockData.getCartItems();
   // 아이템 삭제
   void removeItem(int index) {
     setState(() {
+      Cart().clear(); //[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
       cartItems = CartHelper.removeItemFromCart(
         cartItems,
         cartItems[index].item.id,
@@ -63,6 +65,7 @@ List<CartItem> cartItems = CartMockData.getCartItems();
             ),
             CupertinoDialogAction(
               onPressed: () {
+                Cart().clear(); //[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
               },
