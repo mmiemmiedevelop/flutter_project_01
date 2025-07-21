@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_01/screens/cart/cart_widgets/cart_button_reused_widget.dart';
+import 'package:flutter_project_01/screens/cart/cart_widgets/cart_reused_button_widget.dart';
 
 class CartEmptyWidget extends StatelessWidget {
   final VoidCallback? onShoppingPressed;
@@ -38,13 +38,45 @@ class CartEmptyWidget extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SizedBox(
-            width: double.infinity,
-            child: CartButtonReusedWidget(
-              onPressed: onShoppingPressed,
-              buttonText: '쇼핑하러 가기',
+        // 하단 구분선
+        Container(
+          height: 1,
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFF242424),
+                offset: const Offset(0, -3),
+                blurRadius: 6,
+                spreadRadius: 0,
+              ),
+            ],
+            color: Colors.transparent,
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            top: 10,
+            bottom: 0,
+          ),
+          decoration: const BoxDecoration(color: Colors.white),
+          child: SafeArea(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(height: 10),
+                // 구매 버튼
+                SizedBox(
+                  width: double.infinity,
+                  child: CartReusedButtonWidget(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    buttonText: '쇼핑하러 가기',
+                  ),
+                ),
+              ],
             ),
           ),
         ),
