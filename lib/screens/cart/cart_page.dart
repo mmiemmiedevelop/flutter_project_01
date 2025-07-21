@@ -101,7 +101,7 @@ class _CartPageState extends State<CartPage> {
         children: [
           // 장바구니 아이템 목록
           Expanded(
-            child: cartItems.isEmpty
+            child: Cart().quantity == 0
                 ? const CartEmptyWidget()
                 : CartItemList(
                     cartItems: cartItems,
@@ -110,7 +110,7 @@ class _CartPageState extends State<CartPage> {
                   ),
           ),
           // 하단 결제 영역
-          if (cartItems.isNotEmpty)
+          if (Cart().quantity > 0) //cartItems.isNotEmpty
             CartBottomWidget(
               totalPrice: totalPrice,
               onPurchasePressed: onPurchasePressed,
