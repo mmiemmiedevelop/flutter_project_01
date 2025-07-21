@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_01/common/models/model_cart_item.dart';
+import 'package:flutter_project_01/common/models/model_item.dart';
+import 'package:flutter_project_01/screens/cart/cart_page.dart';
+import 'package:flutter_project_01/screens/cart/cart_utils/cart_singleton.dart';
 
 class Item_Detil extends StatefulWidget {
-  const Item_Detil({super.key});
+  final CartItem cartItem;
+  const Item_Detil({super.key, required this.cartItem});
 
   @override
   State<Item_Detil> createState() => _Item_DetilState();
 }
 
 class _Item_DetilState extends State<Item_Detil> {
-  // const _Item_DetilState({super.key});
-
+  // _Item_DetilState({required this.cartItem});
+  CartItem? cartItem;
   int qty = 0;
   int price = 25000;
   int totarprice = 0;

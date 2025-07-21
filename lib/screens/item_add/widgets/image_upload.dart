@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_project_01/common/widgets/text_styles.dart';
-import 'package:image_picker/image_picker.dart';
+//import 'package:image_picker/image_picker.dart';
 
 class ImageUpload extends StatefulWidget {
   final Function(String)? onImageSelected; // 이미지 선택 후 호출되는 콜백
@@ -13,24 +13,24 @@ class ImageUpload extends StatefulWidget {
 }
 
 class _ImageUploadState extends State<ImageUpload> {
-  ImagePicker picker = ImagePicker();
+ // ImagePicker picker = ImagePicker();
   File? image;
 
-  Future<void> pickImage(ImageSource source) async {
-    final pickedFile = await picker.pickImage(source: source);
-    if (pickedFile != null) {
-      setState(() {
-        image = File(pickedFile.path);
-      });
-    }
-  }
+  // Future<void> pickImage(ImageSource source) async {
+  //   final pickedFile = await picker.pickImage(source: source);
+  //   if (pickedFile != null) {
+  //     setState(() {
+  //       image = File(pickedFile.path);
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 10),
       child: GestureDetector(
-        onTap: () => pickImage(ImageSource.gallery),
+      //  onTap: () => pickImage(ImageSource.gallery),
         child: Container(
           height: 212,
           width: double.infinity,

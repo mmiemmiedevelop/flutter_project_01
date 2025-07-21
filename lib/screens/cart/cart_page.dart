@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_01/common/models/model_cart_item.dart';
+import 'package:flutter_project_01/common/widgets/app_bar.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_mock_data.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_helper.dart';
 import 'package:flutter_project_01/screens/cart/cart_widgets/cart_empty_widget.dart';
@@ -51,20 +52,25 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text(
-          '장바구니',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        centerTitle: true,
-        foregroundColor: Colors.black,
+      appBar: const CustomAppBar(
+        showBackButton: true,
+        showLogo: false,
+        showCart: false,
       ),
+      // AppBar(
+      //   leading: IconButton(
+      //     icon: const Icon(Icons.arrow_back),
+      //     onPressed: () => Navigator.pop(context),
+      //   ),
+      //   title: const Text(
+      //     '장바구니',
+      //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+      //   ),
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      //   centerTitle: true,
+      //   foregroundColor: Colors.black,
+      // ),
       body: Column(
         children: [
           // 장바구니 아이템 목록

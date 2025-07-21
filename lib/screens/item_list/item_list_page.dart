@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_project_01/screens/item_add/item_add_page.dart';
+import 'package:flutter_project_01/screens/item_detail/item_detail_page.dart';
+import 'package:flutter_project_01/screens/cart/cart_page.dart';
 
 class ItemListPage extends StatelessWidget {
   const ItemListPage({super.key});
@@ -65,20 +68,30 @@ class ItemListPage extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(24),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Image.asset(
-                          'assets/images/p1.png',
-                          fit: BoxFit.cover,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ItemAdd(),
+                      ), //Item_Detil()),//임시주석
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            'assets/images/p1.png',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -110,20 +123,30 @@ class ItemListPage extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(24),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Image.asset(
-                          'assets/images/p2.png',
-                          fit: BoxFit.cover,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ItemAdd(),
+                      ), //Item_Detil()),//임시주석
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            'assets/images/p2.png',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -169,20 +192,30 @@ class ItemListPage extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(24),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Image.asset(
-                          'assets/images/p3.png',
-                          fit: BoxFit.cover,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ItemAdd(),
+                      ), //Item_Detil()),//임시주석
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            'assets/images/p3.png',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -214,20 +247,30 @@ class ItemListPage extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(24),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Image.asset(
-                          'assets/images/p4.png',
-                          fit: BoxFit.cover,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ItemAdd(),
+                      ), //Item_Detil()),//임시주석
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            'assets/images/p4.png',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -259,20 +302,30 @@ class ItemListPage extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(24),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Image.asset(
-                          'assets/images/p5.png',
-                          fit: BoxFit.cover,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ItemAdd(),
+                      ), //Item_Detil()),//임시주석
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            'assets/images/p5.png',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
