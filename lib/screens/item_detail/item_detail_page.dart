@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_01/common/models/model_cart_item.dart';
-import 'package:flutter_project_01/common/models/model_item.dart';
-import 'package:flutter_project_01/screens/cart/cart_page.dart';
-import 'package:flutter_project_01/screens/cart/cart_utils/cart_singleton.dart';
 
 class Item_Detil extends StatefulWidget {
-  final CartItem cartItem;
-  const Item_Detil({super.key, required this.cartItem});
+  const Item_Detil({super.key});
 
   @override
   State<Item_Detil> createState() => _Item_DetilState();
 }
 
 class _Item_DetilState extends State<Item_Detil> {
-  // _Item_DetilState({required this.cartItem});
-  CartItem? cartItem;
+  // const _Item_DetilState({super.key});
+
   int qty = 0;
   int price = 25000;
   int totarprice = 0;
@@ -44,12 +39,13 @@ class _Item_DetilState extends State<Item_Detil> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context); //뒤로가기)
+            Navigator.pop(context);
           },
           icon: Icon(Icons.arrow_back),
         ),
         centerTitle: true,
         toolbarHeight: 56,
+        backgroundColor: Colors.white,
         title: const Text('상품 상세', style: TextStyle(color: Colors.black)),
       ),
       backgroundColor: Colors.white, //배경색
@@ -93,7 +89,7 @@ class _Item_DetilState extends State<Item_Detil> {
           ),
           Container(
             width: 411.4,
-            height: 120,
+            height: 190,
             child: ListView(
               scrollDirection: Axis.vertical,
               physics: AlwaysScrollableScrollPhysics(),
@@ -124,9 +120,10 @@ class _Item_DetilState extends State<Item_Detil> {
                   textAlign: TextAlign.start,
                   style: TextStyle(fontSize: 14, color: Colors.black),
                 ),
-                SizedBox(width: 190),
+                SizedBox(width: 210),
                 IconButton(
-                  onPressed: qty > 0 ? _subtractCounter : null,
+                  onPressed: qty <= 0 ? null : _subtractCounter,
+
                   icon: Icon(Icons.remove),
                 ),
                 Text(
@@ -158,7 +155,7 @@ class _Item_DetilState extends State<Item_Detil> {
                     color: Colors.black,
                   ), //나중에 총금액을 적을 자리
                 ),
-                SizedBox(width: 205),
+                SizedBox(width: 225),
                 Text(
                   '${totarprice}원',
                   textAlign: TextAlign.end,
@@ -198,12 +195,7 @@ class _Item_DetilState extends State<Item_Detil> {
                     ),
                   ),
                   onPressed: () {
-                    Cart().add(qty);//[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const CartPage(),
-                      ),
-                    );
+                    Navigator.pop(context,);
                   },
                 ),
               ],

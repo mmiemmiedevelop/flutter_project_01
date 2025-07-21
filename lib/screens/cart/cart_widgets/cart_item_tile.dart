@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_01/common/models/model_cart_item.dart';
-import 'package:flutter_project_01/screens/cart/cart_utils/cart_singleton.dart';
 
 class CartItemTile extends StatelessWidget {
   final CartItem cartItem;
@@ -151,10 +150,7 @@ class QuantityControlWidget extends StatelessWidget {
             height: 32,
             decoration: const BoxDecoration(color: Colors.transparent),
             child: IconButton(
-              onPressed: () {
-                onQuantityChanged(quantity - 1);
-                Cart().subtract(1);//[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
-              },
+              onPressed: () => onQuantityChanged(quantity - 1),
               icon: const Icon(
                 Icons.remove,
                 size: 12,
@@ -185,10 +181,7 @@ class QuantityControlWidget extends StatelessWidget {
             height: 32,
             decoration: const BoxDecoration(color: Colors.transparent),
             child: IconButton(
-              onPressed: () {
-                onQuantityChanged(quantity + 1);
-                Cart().add(1);//[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
-              },
+              onPressed: () => onQuantityChanged(quantity + 1),
               icon: const Icon(
                 Icons.add,
                 size: 12,

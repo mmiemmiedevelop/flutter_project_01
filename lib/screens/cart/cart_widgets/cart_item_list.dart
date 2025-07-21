@@ -4,7 +4,7 @@ import 'package:flutter_project_01/screens/cart/cart_widgets/cart_item_tile.dart
 
 class CartItemList extends StatelessWidget {
   final List<CartItem> cartItems;
-  final Function(int, int) onQuantityChanged;
+  final Function(int) onQuantityChanged;
   final Function(int) onRemove;
 
   const CartItemList({
@@ -22,7 +22,7 @@ class CartItemList extends StatelessWidget {
       itemBuilder: (context, index) {
         return CartItemTile(
           cartItem: cartItems[index],
-          onQuantityChanged: (newQty) => onQuantityChanged(index, newQty),
+          onQuantityChanged: (newQty) => onQuantityChanged(index),
           onRemove: () => onRemove(index),
         );
       },
