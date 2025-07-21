@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_01/screens/cart/cart_page.dart';
+import 'package:flutter_project_01/screens/cart/cart_utils/cart_singleton.dart';
 
 class Item_Detil extends StatefulWidget {
   const Item_Detil({super.key});
@@ -194,9 +195,11 @@ class _Item_DetilState extends State<Item_Detil> {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CartPage()),
+                    Cart().add(qty);//[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const CartPage(),
+                      ),
                     );
                   },
                 ),
