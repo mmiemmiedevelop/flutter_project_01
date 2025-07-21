@@ -73,8 +73,7 @@ class _CartPageState extends State<CartPage> {
                 ? const CartEmptyWidget()
                 : CartItemList(
                     cartItems: cartItems,
-                    onQuantityChanged: (index) =>
-                        updateQuantity(index, cartItems[index].qty),
+                    onQuantityChanged: updateQuantity,
                     onRemove: (index) => removeItem(index),
                   ),
           ),
