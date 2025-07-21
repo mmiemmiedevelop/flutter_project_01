@@ -5,6 +5,9 @@ import 'package:flutter_project_01/common/widgets/text_styles.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImageUpload extends StatefulWidget {
+  final Function(String)? onImageSelected; // 이미지 선택 후 호출되는 콜백
+  const ImageUpload({this.onImageSelected});
+
   @override
   State<ImageUpload> createState() => _ImageUploadState();
 }
