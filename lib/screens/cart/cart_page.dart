@@ -4,6 +4,7 @@ import 'package:flutter_project_01/common/models/model_cart_item.dart';
 import 'package:flutter_project_01/common/widgets/app_bar.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_mock_data.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_helper.dart';
+import 'package:flutter_project_01/screens/cart/cart_utils/cart_singleton.dart';
 import 'package:flutter_project_01/screens/cart/cart_widgets/cart_empty_widget.dart';
 import 'package:flutter_project_01/screens/cart/cart_widgets/cart_item_list.dart';
 import 'package:flutter_project_01/screens/cart/cart_widgets/cart_bottom_widget.dart';
