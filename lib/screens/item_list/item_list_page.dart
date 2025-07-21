@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_project_01/screens/item_add/item_add_page.dart';
-import 'package:flutter_project_01/screens/item_detail/item_detail_page.dart';
+// import 'package:flutter_project_01/screens/item_detail/item_detail_page.dart';
 import 'package:flutter_project_01/screens/cart/cart_page.dart';
 
 class ItemListPage extends StatelessWidget {
-  const ItemListPage({super.key});
+  final int price;
+  final String name;
+  final String image;
+  final int qty;
+
+  const ItemListPage({
+    super.key,
+    this.qty = 0,
+    this.price = 25000,
+    this.name = '럭키비키 001 츄리닝',
+    this.image = 'assets/images/p2.png',
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -118,18 +129,15 @@ class ItemListPage extends StatelessWidget {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(16),
-                          child: Image.asset(
-                            'assets/images/p2.png',
-                            fit: BoxFit.cover,
-                          ),
+                          child: Image.asset('$image', fit: BoxFit.cover),
                         ),
                       ),
                       const SizedBox(width: 24),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
-                            '럭키비키 001 츄리닝',
+                            '$name',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -137,7 +145,7 @@ class ItemListPage extends StatelessWidget {
                           ),
                           SizedBox(height: 8),
                           Text(
-                            '25,000원',
+                            '$price',
                             style: TextStyle(
                               fontSize: 24,
                               color: Colors.black,
@@ -339,7 +347,8 @@ class ItemListPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CartPage()),
+                  MaterialPageRoute(
+                    builder: (context) =>CartPage(), ),
                 );
               },
               icon: Image.asset('assets/images/pluse.png'),

@@ -105,6 +105,7 @@ class _CartPageState extends State<CartPage> {
       // ),
       body: Column(
         children: [
+          
           // 장바구니 아이템 목록
           Expanded(
             child: Cart().quantity == 0
