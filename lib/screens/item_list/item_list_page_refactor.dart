@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_01/common/widgets/app_bar.dart';
 import 'package:flutter_project_01/screens/item_list/item_list_mock_data.dart';
+import 'package:flutter_project_01/screens/item_add/item_add_page.dart';
 import 'item_list_tile.dart';
 import 'package:flutter_project_01/screens/item_detail/item_detail_page.dart'; // Added import for ItemDetailPage
 
@@ -103,6 +104,15 @@ class ItemListPageRefactor extends StatelessWidget {
             return tile;
           }
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ItemAdd()),
+          );
+        },
+        child: Image.asset('assets/images/pluse.png', width: 64, height: 64),
       ),
     );
   }
