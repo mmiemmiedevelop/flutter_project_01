@@ -67,8 +67,7 @@ class _CartPageState extends State<CartPage> {
             CupertinoDialogAction(
               onPressed: () {
                 Cart().clear(); //[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
+                Navigator.of(context).popUntil((route) => route.isFirst);
               },
               child: const Text('구매'),
             ),
@@ -88,6 +87,7 @@ class _CartPageState extends State<CartPage> {
         showBackButton: true,
         showLogo: false,
         showCart: false,
+        titleString: '장바구니',
       ),
       // AppBar(
       //   leading: IconButton(
@@ -105,7 +105,6 @@ class _CartPageState extends State<CartPage> {
       // ),
       body: Column(
         children: [
-          
           // 장바구니 아이템 목록
           Expanded(
             child: Cart().quantity == 0

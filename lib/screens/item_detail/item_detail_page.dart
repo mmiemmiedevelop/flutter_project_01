@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_01/common/models/model_cart_item.dart';
 import 'package:flutter_project_01/common/models/model_item.dart';
+import 'package:flutter_project_01/common/widgets/app_bar.dart';
 import 'package:flutter_project_01/screens/cart/cart_page.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_singleton.dart';
 
@@ -41,23 +42,19 @@ class _Item_DetilState extends State<Item_Detil> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context); //뒤로가기)
-          },
-          icon: Icon(Icons.arrow_back),
-        ),
-        centerTitle: true,
-        toolbarHeight: 56,
-        title: const Text('상품 상세', style: TextStyle(color: Colors.black)),
+      backgroundColor: Colors.white,
+      appBar: const CustomAppBar(
+        showBackButton: true,
+        showLogo: false,
+        showCart: false,
+        titleString: '상품 상세',
       ),
-      backgroundColor: Colors.white, //배경색
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          SizedBox(height: 20),
           Container(
-            height: 315,
+            height: 290,
             width: 411.4,
             margin: EdgeInsets.symmetric(horizontal: 20),
             color: Colors.white, //배경색과 같이 설정
