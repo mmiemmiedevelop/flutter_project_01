@@ -11,7 +11,7 @@ class ImageUpload extends StatefulWidget {
   State<ImageUpload> createState() => _ImageUploadState();
 }
 
-// 이미지 선택 
+// 이미지 선택
 class _ImageUploadState extends State<ImageUpload> {
   String? selectedImage;
 
@@ -24,6 +24,10 @@ class _ImageUploadState extends State<ImageUpload> {
           setState(() {
             selectedImage = ('assets/images/p6.png');
           });
+
+          if (widget.onImageSelected != null) {
+            widget.onImageSelected!(selectedImage!);
+          }
         },
         child: Container(
           height: 212,

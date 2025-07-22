@@ -34,7 +34,9 @@ class _ItemAddState extends State<ItemAdd> {
       'name': itemName.isNotEmpty ? itemName : "임시 등록 이름",
       'price': itemPrice > 0 ? itemPrice : 10000,
       'description': itemDesc.isNotEmpty ? itemDesc : "테스트용 description",
-      'image': itemImage.isNotEmpty ? itemImage : "assets/images/p4.png",//[sam]1.이미지 피커 덜어내기 2.에셋 임의로 코드내에 추가해놓기 3.하드코딩으로 "안에 패스만변경" 
+      'image': itemImage.isNotEmpty
+          ? itemImage
+          : "assets/images/p4.png", //[sam]1.이미지 피커 덜어내기 2.에셋 임의로 코드내에 추가해놓기 3.하드코딩으로 "안에 패스만변경"
     };
   }
 
@@ -75,9 +77,9 @@ class _ItemAddState extends State<ItemAdd> {
           children: [
             // 이미지 등록 필드
             ImageUpload(
-              onImageSelected: (imagePath) {
+              onImageSelected: (selectedImage) {
                 setState(() {
-                  itemImage = imagePath;
+                  itemImage = selectedImage;
                 });
               },
             ),
