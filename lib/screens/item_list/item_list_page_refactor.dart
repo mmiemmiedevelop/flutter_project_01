@@ -124,6 +124,8 @@ class _ItemListPageRefactorState extends State<ItemListPageRefactor> {
             print('result: $result');
           }
         },
+        backgroundColor: Colors.transparent, // 배경을 투명하게 설정
+        elevation: 0, // 그림자 제거
         child: Image.asset(
           'assets/images/item_add_icon.png',
           width: 64,

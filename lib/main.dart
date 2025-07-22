@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_01/common/widgets/app_bar.dart';
-import 'package:flutter_project_01/screens/item_list/item_list_page.dart';
 import 'package:flutter_project_01/screens/item_list/item_list_page_refactor.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  runApp(const MaterialApp(home: FirstPage()));
+  runApp(
+    const MaterialApp(debugShowCheckedModeBanner: false, home: FirstPage()),
+  );
 }
 
 class FirstPage extends StatefulWidget {
@@ -35,24 +35,6 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ItemListPageRefactor()
-    );
+    return Scaffold(body: ItemListPageRefactor());
   }
 }
-
-// class FirstPage extends StatelessWidget {
-//   const FirstPage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: const CustomAppBar(
-//         showBackButton: false,
-//         showLogo: true,
-//         showCart: true,
-//       ),
-//       body: const ItemListPage(),//⭐️커밋시 커밋안돼게 주의!!!!!!!⭐️
-//     );
-//   }
-// }
