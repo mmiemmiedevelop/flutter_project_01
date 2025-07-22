@@ -344,11 +344,11 @@ class ItemListPage extends StatelessWidget {
             left: 300,
             top: 650,
             child: IconButton(
+              color: Colors.transparent,
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) =>CartPage(), ),
+                  MaterialPageRoute(builder: (context) => CartPage()),
                 );
               },
               icon: Image.asset('assets/images/pluse.png'),
