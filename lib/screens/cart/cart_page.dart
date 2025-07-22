@@ -4,10 +4,10 @@ import 'package:flutter_project_01/common/models/model_cart_item.dart';
 import 'package:flutter_project_01/common/widgets/app_bar.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_mock_data.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_helper.dart';
-import 'package:flutter_project_01/screens/cart/cart_utils/cart_singleton.dart';
 import 'package:flutter_project_01/screens/cart/cart_widgets/cart_empty_widget.dart';
 import 'package:flutter_project_01/screens/cart/cart_widgets/cart_item_list.dart';
 import 'package:flutter_project_01/screens/cart/cart_widgets/cart_bottom_widget.dart';
+import 'package:flutter_project_01/screens/cart/cart_utils/cart_singleton.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -41,6 +41,7 @@ class _CartPageState extends State<CartPage> {
   // 아이템 삭제
   void removeItem(int index) {
     setState(() {
+      Cart().clear(); //[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
       cartItems = CartHelper.removeItemFromCart(
         cartItems,
         cartItems[index].item.id,
@@ -106,17 +107,20 @@ class _CartPageState extends State<CartPage> {
         children: [
           // 장바구니 아이템 목록
           Expanded(
-            child: cartItems.isEmpty
+            child: Cart().quantity == 0
                 ? const CartEmptyWidget()
                 : CartItemList(
                     cartItems: cartItems,
-                    onQuantityChanged: (index) =>
-                        updateQuantity(index, cartItems[index].qty),
+                    onQuantityChanged: updateQuantity,
                     onRemove: (index) => removeItem(index),
                   ),
           ),
           // 하단 결제 영역
-          if (cartItems.isNotEmpty) CartBottomWidget(totalPrice: totalPrice),
+          if (Cart().quantity > 0) //cartItems.isNotEmpty
+            CartBottomWidget(
+              totalPrice: totalPrice,
+              onPurchasePressed: onPurchasePressed,
+            ),
         ],
       ),
     );
