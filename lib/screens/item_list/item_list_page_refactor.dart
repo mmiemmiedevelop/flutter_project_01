@@ -124,7 +124,11 @@ class _ItemListPageRefactorState extends State<ItemListPageRefactor> {
             print('result: $result');
           }
         },
-        child: Image.asset('assets/images/pluse.png', width: 64, height: 64),
+        child: Image.asset(
+          'assets/images/item_add_icon.png',
+          width: 64,
+          height: 64,
+        ),
       ),
     );
   }

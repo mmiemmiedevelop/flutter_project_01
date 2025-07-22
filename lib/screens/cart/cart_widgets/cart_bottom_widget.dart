@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_01/screens/cart/cart_widgets/cart_reused_button_widget.dart';
+import 'package:flutter_project_01/screens/cart/cart_widgets/cart_button_reused_widget.dart';
 
 class CartBottomWidget extends StatelessWidget {
   final int totalPrice;
@@ -69,7 +69,7 @@ class CartBottomWidget extends StatelessWidget {
                 // 구매 버튼
                 SizedBox(
                   width: double.infinity,
-                  child: CartReusedButtonWidget(
+                  child: CartButtonReusedWidget(
                     onPressed: onPurchasePressed,
                     buttonText: '구매하기',
                   ),

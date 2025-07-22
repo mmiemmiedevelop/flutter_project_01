@@ -95,7 +95,7 @@ class _Item_DetilState extends State<Item_Detil> {
           ),
           Container(
             width: 411.4,
-            height: 120,
+            height: 190,
             child: ListView(
               scrollDirection: Axis.vertical,
               physics: AlwaysScrollableScrollPhysics(),
@@ -126,9 +126,10 @@ class _Item_DetilState extends State<Item_Detil> {
                   textAlign: TextAlign.start,
                   style: TextStyle(fontSize: 14, color: Colors.black),
                 ),
-                SizedBox(width: 190),
+                SizedBox(width: 210),
                 IconButton(
-                  onPressed: qty > 0 ? _subtractCounter : null,
+                  onPressed: qty <= 0 ? null : _subtractCounter,
+
                   icon: Icon(Icons.remove),
                 ),
                 Text(
@@ -160,7 +161,7 @@ class _Item_DetilState extends State<Item_Detil> {
                     color: Colors.black,
                   ), //나중에 총금액을 적을 자리
                 ),
-                SizedBox(width: 205),
+                SizedBox(width: 225),
                 Text(
                   '${_formatPrice(totarprice)}원',
                   textAlign: TextAlign.end,
