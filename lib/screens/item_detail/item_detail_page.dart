@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project_01/common/models/model_cart_item.dart';
 import 'package:flutter_project_01/common/models/model_item.dart';
+import 'package:flutter_project_01/common/widgets/app_bar.dart';
 import 'package:flutter_project_01/screens/cart/cart_page.dart';
 import 'package:flutter_project_01/screens/cart/cart_utils/cart_singleton.dart';
 
@@ -15,7 +16,7 @@ class Item_Detil extends StatefulWidget {
 class _Item_DetilState extends State<Item_Detil> {
   // _Item_DetilState({required this.cartItem});
   CartItem? cartItem;
-  int qty = 0;
+  int qty = 0; //카트에 담긴 수량 > addCart에서 씁니다
   int price = 25000;
   int totarprice = 0;
   String? desc;
@@ -26,7 +27,7 @@ class _Item_DetilState extends State<Item_Detil> {
     //addCount 상태변화
     setState(() {
       qty++;
-      totarprice = price * qty;
+      totarprice = widget.cartItem.item.price * qty;
     });
   }
 
@@ -34,35 +35,34 @@ class _Item_DetilState extends State<Item_Detil> {
     //subtractCount 상태변화
     setState(() {
       qty--;
-      totarprice = price * qty;
+      totarprice = widget.cartItem.item.price * qty;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context); //뒤로가기)
-          },
-          icon: Icon(Icons.arrow_back),
-        ),
-        centerTitle: true,
-        toolbarHeight: 56,
-        title: const Text('상품 상세', style: TextStyle(color: Colors.black)),
+      backgroundColor: Colors.white,
+      appBar: const CustomAppBar(
+        showBackButton: true,
+        showLogo: false,
+        showCart: false,
+        titleString: '상품 상세',
       ),
-      backgroundColor: Colors.white, //배경색
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          SizedBox(height: 20),
           Container(
-            height: 315,
+            height: 290,
             width: 411.4,
             margin: EdgeInsets.symmetric(horizontal: 20),
             color: Colors.white, //배경색과 같이 설정
             child: ClipRRect(
-              child: Image.asset(image, fit: BoxFit.cover),
+              child: Image.asset(
+                '${widget.cartItem.item.image}',
+                fit: BoxFit.cover,
+              ),
               borderRadius: BorderRadius.circular(12),
             ),
           ),
@@ -73,7 +73,7 @@ class _Item_DetilState extends State<Item_Detil> {
             margin: EdgeInsets.symmetric(horizontal: 20),
             alignment: Alignment.centerLeft,
             child: Text(
-              name,
+              widget.cartItem.item.name,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 32,
@@ -87,13 +87,15 @@ class _Item_DetilState extends State<Item_Detil> {
             margin: EdgeInsets.symmetric(horizontal: 20),
             alignment: Alignment.centerLeft,
             child: Text(
-              '$price원',
+              widget.cartItem.item.price == 0
+                  ? '무료'
+                  : '${_formatPrice(widget.cartItem.item.price)}원',
               style: TextStyle(fontSize: 24, color: Color(0xFF1C1B1F)),
             ),
           ),
           Container(
             width: 411.4,
-            height: 120,
+            height: 190,
             child: ListView(
               scrollDirection: Axis.vertical,
               physics: AlwaysScrollableScrollPhysics(),
@@ -103,7 +105,7 @@ class _Item_DetilState extends State<Item_Detil> {
                   margin: EdgeInsets.only(left: 20, right: 20, top: 8),
                   color: Colors.white,
                   child: Text(
-                    "\"당신도 001번 플레이어처럼 운명을 바꿔보세요\" 🏆 1등의 운을 담은 특별한 츄리닝 운명을 바꾼 전설의 001번을 재현한 한정판 ⚠️ 특별 주의사항 본 제품 착용 시 운이 급상승할 수 있습니다 001번의 운명은 본인 몫입니다 실제 456억원은 포함되지 않습니다 게임 참가권은 별매입니다",
+                    widget.cartItem.item.desc ?? '',
                     style: TextStyle(fontSize: 16, color: Colors.black),
                   ),
                 ),
@@ -124,9 +126,10 @@ class _Item_DetilState extends State<Item_Detil> {
                   textAlign: TextAlign.start,
                   style: TextStyle(fontSize: 14, color: Colors.black),
                 ),
-                SizedBox(width: 190),
+                SizedBox(width: 210),
                 IconButton(
-                  onPressed: qty > 0 ? _subtractCounter : null,
+                  onPressed: qty <= 0 ? null : _subtractCounter,
+
                   icon: Icon(Icons.remove),
                 ),
                 Text(
@@ -158,9 +161,9 @@ class _Item_DetilState extends State<Item_Detil> {
                     color: Colors.black,
                   ), //나중에 총금액을 적을 자리
                 ),
-                SizedBox(width: 205),
+                SizedBox(width: 225),
                 Text(
-                  '${totarprice}원',
+                  '${_formatPrice(totarprice)}원',
                   textAlign: TextAlign.end,
                   style: TextStyle(
                     fontSize: 16,
@@ -198,11 +201,9 @@ class _Item_DetilState extends State<Item_Detil> {
                     ),
                   ),
                   onPressed: () {
-                    Cart().add(qty);//[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
+                    Cart().add(qty); //[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
                     Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const CartPage(),
-                      ),
+                      MaterialPageRoute(builder: (context) => const CartPage()),
                     );
                   },
                 ),
@@ -214,4 +215,11 @@ class _Item_DetilState extends State<Item_Detil> {
       ),
     );
   }
+}
+
+String _formatPrice(int price) {
+  return price.toString().replaceAllMapped(
+    RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+    (Match m) => '${m[1]},',
+  );
 }

@@ -5,6 +5,8 @@ import 'package:flutter_project_01/screens/item_add/widgets/image_upload.dart';
 import 'package:flutter_project_01/screens/item_add/widgets/user_input.dart';
 
 class ItemAdd extends StatefulWidget {
+  const ItemAdd({super.key});
+
   @override
   State<ItemAdd> createState() => _ItemAddState();
 }
@@ -14,7 +16,7 @@ class _ItemAddState extends State<ItemAdd> {
   String itemName = "";
   int itemPrice = 0;
   String itemDesc = "";
-  String? itemImage;
+  String itemImage = "";
 
   // 모든 필드가 채워졌는지 확인하는 함수
   bool get isAllFieldsFilled {
@@ -29,10 +31,12 @@ class _ItemAddState extends State<ItemAdd> {
     if (!isAllFieldsFilled) return null;
 
     return {
-      'name': itemName,
-      'price': itemPrice,
-      'description': itemDesc,
-      'image': itemImage,
+      'name': itemName.isNotEmpty ? itemName : "임시 등록 이름",
+      'price': itemPrice > 0 ? itemPrice : 10000,
+      'description': itemDesc.isNotEmpty ? itemDesc : "테스트용 description",
+      'image': itemImage.isNotEmpty
+          ? itemImage
+          : "assets/images/p4.png", //[sam]1.이미지 피커 덜어내기 2.에셋 임의로 코드내에 추가해놓기 3.하드코딩으로 "안에 패스만변경"
     };
   }
 
@@ -73,9 +77,9 @@ class _ItemAddState extends State<ItemAdd> {
           children: [
             // 이미지 등록 필드
             ImageUpload(
-              onImageSelected: (imagePath) {
+              onImageSelected: (selectedImage) {
                 setState(() {
-                  itemImage = imagePath;
+                  itemImage = selectedImage;
                 });
               },
             ),
@@ -125,7 +129,7 @@ class _ItemAddState extends State<ItemAdd> {
         // 등록하기 버튼
         bottomNavigationBar: AddButton(
           isEnabled: isAllFieldsFilled,
-          itemData: itemData, // 상품 데이터 전달
+          itemData: itemData, // 상품 데이터 전달//[sam] 임시테스트 반환해보니 리프레시 잘됍니다
           successMessage: "상품이 성공적으로 등록되었습니다! 🎉",
         ),
       ),

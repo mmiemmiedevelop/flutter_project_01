@@ -6,12 +6,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showBackButton;
   final bool showLogo;
   final bool showCart;
+  final String? titleString;
 
   const CustomAppBar({
     super.key,
     this.showBackButton = true,
     this.showLogo = true,
     this.showCart = true,
+    this.titleString,
   });
 
   @override
@@ -30,36 +32,39 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             )
           : null,
       centerTitle: true,
-      title: showLogo
-          ? Image.asset('assets/images/logo.png', height: 80)
-          : const SizedBox.shrink(),
-      // actions: [
-      //   if (showCart)
-      //     Padding(
-      //       padding: const EdgeInsets.only(right: 16),
-      //       // child: GestureDetector(
-      //       //   onTap: () {
-      //       //     Navigator.push(
-      //       //       context,
-      //       //       MaterialPageRoute(
-      //       //         builder: (context) => CartPage(
-      //       //           // qty: 0, // 기본값 설정
-      //       //           // name: '', // 기본값 설정
-      //       //           // image: '', // 기본값 설정
-      //       //         ),
-      //       //       ),
-      //       //     );
-      //       //   },
-      //         child: Image.asset(
-      //           'assets/images/Vector.png',
-      //           height: 32,
-      //           width: 32,
-      //           color: Colors.black,
-      //           colorBlendMode: BlendMode.srcIn,
-      //         ),
-      //       ),
-      //     ),
-      // ],
+      title: (titleString != null && titleString!.isNotEmpty)
+          ? Text(
+              titleString!,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            )
+          : (showLogo
+                ? Image.asset('assets/images/logo.png', height: 80)
+                : const SizedBox.shrink()),
+      actions: [
+        if (showCart)
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CartPage()),
+                );
+              },
+              child: Image.asset(
+                'assets/images/Vector.png',
+                height: 32,
+                width: 32,
+                color: Colors.black,
+                colorBlendMode: BlendMode.srcIn,
+              ),
+            ),
+          ),
+      ],
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1),
         child: Divider(height: 1, thickness: 1, color: Colors.grey.shade300),
