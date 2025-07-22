@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_project_01/common/models/model_cart_item.dart';
 import 'package:flutter_project_01/common/models/model_item.dart';
 import 'package:flutter_project_01/common/widgets/app_bar.dart';
@@ -200,9 +201,31 @@ class _Item_DetilState extends State<Item_Detil> {
                     ),
                   ),
                   onPressed: () {
-                    Cart().add(qty); //[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const CartPage()),
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return CupertinoAlertDialog(
+                          title: const Text('장바구니 담기'),
+                          content: const Text('상품이 장바구니에 담겼습니다.'),
+                          actions: [
+                            CupertinoDialogAction(
+                              child: const Text('확인'),
+                              onPressed: () {
+                                Cart().addItem(
+                                  widget.cartItem.item,
+                                  quantity: qty,
+                                );
+                                Navigator.of(context).pop(); // 팝업 닫기
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const CartPage(),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        );
+                      },
                     );
                   },
                 ),

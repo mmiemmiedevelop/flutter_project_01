@@ -1,9 +1,9 @@
 class Item {
-  final String id; // 상품 ID
-  final String image; // 이미지 URL 또는 경로
-  final String name; // 상품명
-  final int price; // 가격
-  final String? desc; // 설명(옵셔널)
+  String id; // 상품 ID
+  String image; // 이미지 URL 또는 경로
+  String name; // 상품명
+  int price; // 가격
+  String? desc; // 설명(옵셔널)
 
   Item({
     required this.id,

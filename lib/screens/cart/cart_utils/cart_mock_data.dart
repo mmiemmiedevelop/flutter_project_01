@@ -14,8 +14,8 @@ class CartMockData {
           price: 25000,
           desc: 'Squid Game 캐릭터 의상',
         ),
-        qty: Cart().quantity,
-        totalPrice: Cart().quantity * 25000,
+        qty:0, //Cart().quantity,
+        totalPrice: 0,//Cart().quantity * 25000,
       ),
       // CartItem(
       //   item: Item(

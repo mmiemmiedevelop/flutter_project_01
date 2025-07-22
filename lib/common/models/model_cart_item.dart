@@ -1,9 +1,9 @@
 import 'package:flutter_project_01/common/models/model_item.dart';
 
 class CartItem {
-  final Item item; // 상품 정보
-  final int qty; // 수량
-  final int totalPrice; // 총 가격
+  Item item; // 상품 정보
+  int qty; // 수량
+  int totalPrice; // 총 가격
 
   CartItem({required this.item, required this.qty, required this.totalPrice});
 }
