@@ -71,7 +71,7 @@ class CartEmptyWidget extends StatelessWidget {
                   width: double.infinity,
                   child: CartReusedButtonWidget(
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      Navigator.of(context).popUntil((route) => route.isFirst);
                     },
                     buttonText: '쇼핑하러 가기',
                   ),

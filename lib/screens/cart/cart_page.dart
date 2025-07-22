@@ -18,34 +18,29 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   // 장바구니 아이템 목록
-  List<CartItem> cartItems = CartMockData.getCartItems();
+  //List<CartItem> cartItems = CartMockData.getCartItems();
+  List<CartItem> cartItems = Cart().items;
   //List<CartItem> cartItems = CartMockData.getEmptyCart();
 
   // ----------------------------------------------------메소드-------------------------------------------------------------
   // 총 가격 계산
   int get totalPrice {
-    return CartHelper.calculateTotalPrice(cartItems);
+    return CartHelper.calculateTotalPrice();
   }
 
   // 수량 업데이트
   void updateQuantity(int index, int newQty) {
     setState(() {
-      cartItems = CartHelper.updateItemQuantity(
-        cartItems,
-        cartItems[index].item.id,
-        newQty,
-      );
+      Cart().addItem(cartItems[index].item, quantity: newQty);
+      CartHelper.updateItemQuantity(cartItems[index].item, newQty);
     });
   }
 
   // 아이템 삭제
   void removeItem(int index) {
     setState(() {
-      Cart().clear(); //[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
-      cartItems = CartHelper.removeItemFromCart(
-        cartItems,
-        cartItems[index].item.id,
-      );
+      Cart().removeItem(cartItems[index].item, quantity: 1);
+      CartHelper.removeItemFromCart(cartItems[index].item, quantity: 1);
     });
   }
 
@@ -66,9 +61,8 @@ class _CartPageState extends State<CartPage> {
             ),
             CupertinoDialogAction(
               onPressed: () {
-                Cart().clear(); //[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
+                Cart().clear();
+                Navigator.of(context).popUntil((route) => route.isFirst);
               },
               child: const Text('구매'),
             ),
@@ -88,6 +82,7 @@ class _CartPageState extends State<CartPage> {
         showBackButton: true,
         showLogo: false,
         showCart: false,
+        titleString: '장바구니',
       ),
       // AppBar(
       //   leading: IconButton(
@@ -105,10 +100,9 @@ class _CartPageState extends State<CartPage> {
       // ),
       body: Column(
         children: [
-          
           // 장바구니 아이템 목록
           Expanded(
-            child: Cart().quantity == 0
+            child: Cart().items.isEmpty
                 ? const CartEmptyWidget()
                 : CartItemList(
                     cartItems: cartItems,
@@ -117,7 +111,7 @@ class _CartPageState extends State<CartPage> {
                   ),
           ),
           // 하단 결제 영역
-          if (Cart().quantity > 0) //cartItems.isNotEmpty
+          if (Cart().items.isNotEmpty)
             CartBottomWidget(
               totalPrice: totalPrice,
               onPurchasePressed: onPurchasePressed,

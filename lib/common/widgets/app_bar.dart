@@ -6,12 +6,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showBackButton;
   final bool showLogo;
   final bool showCart;
+  final String? titleString;
 
   const CustomAppBar({
     super.key,
     this.showBackButton = true,
     this.showLogo = true,
     this.showCart = true,
+    this.titleString,
   });
 
   @override
@@ -30,9 +32,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             )
           : null,
       centerTitle: true,
-      title: showLogo
-          ? Image.asset('assets/images/logo.png', height: 80)
-          : const SizedBox.shrink(),
+      title: (titleString != null && titleString!.isNotEmpty)
+          ? Text(
+              titleString!,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            )
+          : (showLogo
+                ? Image.asset('assets/images/logo.png', height: 80)
+                : const SizedBox.shrink()),
       actions: [
         if (showCart)
           Padding(

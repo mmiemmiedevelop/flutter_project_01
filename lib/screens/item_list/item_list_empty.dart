@@ -6,31 +6,7 @@ class ItemListEmptyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [Image.asset('assets/images/logo.png', height: 80)],
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 1,
-        iconTheme: const IconThemeData(color: Colors.black),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: GestureDetector(
-              onTap: () {},
-              child: Image.asset(
-                'assets/images/Vector.png',
-                height: 32,
-                width: 32,
-                color: Colors.black,
-                colorBlendMode: BlendMode.srcIn,
-              ),
-            ),
-          ),
-        ],
-      ),
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

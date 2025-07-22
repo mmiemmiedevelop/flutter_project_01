@@ -87,6 +87,7 @@ class CartItemTile extends StatelessWidget {
                     QuantityControlWidget(
                       quantity: cartItem.qty,
                       onQuantityChanged: onQuantityChanged,
+                      cartItem: cartItem,
                     ),
                   ],
                 ),
@@ -127,11 +128,13 @@ class CartItemTile extends StatelessWidget {
 class QuantityControlWidget extends StatelessWidget {
   final int quantity;
   final Function(int) onQuantityChanged;
+  final CartItem cartItem;
 
   const QuantityControlWidget({
     super.key,
     required this.quantity,
     required this.onQuantityChanged,
+    required this.cartItem,
   });
 
   @override
@@ -153,7 +156,6 @@ class QuantityControlWidget extends StatelessWidget {
             child: IconButton(
               onPressed: () {
                 onQuantityChanged(quantity - 1);
-                Cart().subtract(1);//[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
               },
               icon: const Icon(
                 Icons.remove,
@@ -187,7 +189,6 @@ class QuantityControlWidget extends StatelessWidget {
             child: IconButton(
               onPressed: () {
                 onQuantityChanged(quantity + 1);
-                Cart().add(1);//[Todo]싱글톤으로 수량만 해놓은 부분 수정필요
               },
               icon: const Icon(
                 Icons.add,
