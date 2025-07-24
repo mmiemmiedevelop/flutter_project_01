@@ -5,6 +5,8 @@
 해당 앱은 **아이폰 16 pro**를 기반으로 최적화 및 개발되어 있으며  
 해당 기종으로 플레이해 주시길 바랍니다.  
 
+https://youtu.be/6y-soeMEE-o : 시연영상
+
 <p align="center">
   <img src="docs/주요 기능.png" width="100%" alt="주요 기능 예시 이미지"/>
 </p>
